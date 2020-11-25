@@ -22,8 +22,8 @@ BENCHMARK ?= regression_results/benchmark_results/SW_HD.csv
 REGRESSION_TAG ?= TEST_SW_HD
 PRINT_REM_DESIGNS_TIME ?= 0
 
-SKYWATER_COMMIT ?= 5cd70ed19fee8ea37c4e8dbd5c5c3eaa9886dd23
-OPEN_PDKS_COMMIT ?= 48db3e1a428ae16f5d4c86e0b7679656cf8afe3d
+SKYWATER_COMMIT ?= ca58d58c07ab2dac53488df393da633fd5fb9a02
+OPEN_PDKS_COMMIT ?= b427e3bd10dcdc36891ae270a1ef0bd02602c553
 
 ifndef PDK_ROOT
 $(error PDK_ROOT is undefined, please export it before running make)
@@ -59,6 +59,8 @@ all-skywater-libraries: skywater-pdk
 		git submodule update --init libraries/sky130_fd_sc_hdll/latest && \
 		git submodule update --init libraries/sky130_fd_sc_ms/latest && \
 		git submodule update --init libraries/sky130_fd_sc_ls/latest && \
+		git submodule update --init libraries/sky130_fd_sc_hvl/latest && \
+		git submodule update --init libraries/sky130_fd_io/latest && \
 		$(MAKE) -j$(THREADS) timing
 
 ### OPEN_PDKS
